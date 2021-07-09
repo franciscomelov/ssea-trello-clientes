@@ -1,20 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
-
-@font-face {
-    font-family: 'PokemonFont';
-    src: url('PokemonFont.ttf');  
-}
-
-* {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: rgb(255, 2, 2);
+    background: #508CA4;
     line-height: 1.5;
-    font-family: 'Caveat', cursive;
+    font-family: "Arial";
 }
 
 main {
@@ -25,11 +18,11 @@ main {
 
 main > h1 {
     text-align: center;
-    color: #e4c439;
+    color: black;
     margin-bottom: 2rem;
     font-size: 3rem;
-    font-family: 'PokemonFont';
-    -webkit-text-stroke: 1.5px rgb(54, 0, 248);
+    font-family: 'Arial';
+   
 }
 
 #app {
@@ -42,8 +35,8 @@ main > h1 {
 
 .card {
     width: 12rem auto;
-    background: rgb(54, 0, 248);
-    color: #e4c439;
+    background: white;
+    color: black;
     padding: 1rem;
     border-radius: 10px;
     border-top: 0.5px solid #cebf7b;
@@ -56,7 +49,7 @@ main > h1 {
     transition: 0.2s ease-in-out all;
 }
 
-.card:hover {
+.card:hover  {
     transform: scale(1.05);
     
 }

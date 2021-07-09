@@ -1,4 +1,6 @@
 "use strict";
+//https://www.daniweb.com/programming/web-development/threads/348128/creating-an-html-page-automatically
+//l#?options=
 var url = "https://trello.com/b/LwJLRHFA.json";
 function Get(url) {
     var Httpreq = new XMLHttpRequest(); // a new request
@@ -10,9 +12,19 @@ var json_obj = JSON.parse(Get(url));
 //json_obj.cards[id].labels[0].color
 var container = document.getElementById("app");
 var fetchData = function () {
-    var numeroCartas = json_obj.cards.length;
-    for (var i = 0; i < numeroCartas; i++) {
-        getClient(i);
+    var url = window.location.href;
+    var match = url.match('[=]');
+    if (match == null) {
+        var numeroCartas = json_obj.cards.length;
+        for (var i = 0; i < numeroCartas; i++) {
+            getClient(i);
+        }
+    }
+    else {
+        var client = parseInt(url.slice(match.index + 1, url.length));
+        console.log(client);
+        getClient(client);
+        //http://127.0.0.1:5500/index.html#?options=1
     }
 };
 var getClient = function (id) {

@@ -1,5 +1,5 @@
-https://www.daniweb.com/programming/web-development/threads/348128/creating-an-html-page-automatically
- 
+//https://www.daniweb.com/programming/web-development/threads/348128/creating-an-html-page-automatically
+//l#?options=
  const url: string = "https://trello.com/b/LwJLRHFA.json"
 function Get(url: string){
     var Httpreq = new XMLHttpRequest(); // a new request
@@ -22,13 +22,31 @@ interface ICliente {
 
 
 const fetchData = (): void => {
+  const url: string = window.location.href;
+  const match:any  = url.match('[=]');
+
+
+  if(match==null){
     let numeroCartas = json_obj.cards.length
     for (let i = 0; i < numeroCartas; i++) {
         getClient(i)
   }
+  }
+  else{
+    const client = parseInt(url.slice(match.index+1, url.length));
+    console.log(client)
+  
+    getClient(client)
+    //http://127.0.0.1:5500/index.html#?options=1
+  }
+  
+ 
+
+
 }
 
-const getClient =  (id: number)  => {    
+const getClient =  (id: number)  => {
+
 
   const transformedClient = {
     id: id,
@@ -52,3 +70,4 @@ const ShowCLient = (client: ICliente): void => {
 }
 
 fetchData()
+

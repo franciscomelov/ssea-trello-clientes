@@ -54,7 +54,8 @@ var _loop_1 = function (i) {
         var sub_id = e[i].innerText;
         var result = sub_id.search(/\n/);
         var id = sub_id.substring(0, result);
-        var newUrl = "http://127.0.0.1:5500/index.html#?options=" + id;
+        var c_url = window.location.href;
+        var newUrl = window.location.href + "#?options=" + id;
         console.log(newUrl);
         //or call a function
     });

@@ -7,6 +7,8 @@ function Get(url: string) {
   return Httpreq.responseText;
 }
 
+
+
 var json_obj = JSON.parse(Get(url));
 const container: HTMLElement | any = document.getElementById("app");
 var clients: { id: any; name: any; desc: any; }[] = []
@@ -91,8 +93,11 @@ for(let i in e){
     let sub_id = e[i].innerText
     var result = sub_id.search(/\n/);
     const id = sub_id.substring(0,result)
+    
+    const c_url: string = window.location.href;
+   
 
-    const newUrl: string ="http://127.0.0.1:5500/index.html#?options="+id;
+    const newUrl: string =window.location.href+ "#?options="+ id;
     console.log(newUrl)
     
   
@@ -100,3 +105,4 @@ for(let i in e){
 
 });
 }
+

@@ -56,9 +56,18 @@ var _loop_1 = function (i) {
         var id = sub_id.substring(0, result);
         var newUrl = window.location.href + "#?options=" + id;
         console.log(newUrl);
-        navigator.clipboard.writeText(newUrl);
+        // navigator.clipboard.writeText(newUrl)
+        var dummy = document.createElement("textarea");
+        // to avoid breaking orgain page when copying more words
+        // cant copy when adding below this code
+        // dummy.style.display = 'none'
+        document.body.appendChild(dummy);
+        //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
+        dummy.value = newUrl;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
         alert("Copiado");
-        //or call a function
     });
 };
 for (var i in e) {

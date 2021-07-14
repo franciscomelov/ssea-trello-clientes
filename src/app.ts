@@ -9,7 +9,7 @@ function Get(url: string) {
 
 var json_obj = JSON.parse(Get(url));
 const container: HTMLElement | any = document.getElementById("app");
-
+var clients: { id: any; name: any; desc: any; }[] = []
 
 interface ICliente {
   id: number;
@@ -19,29 +19,52 @@ interface ICliente {
 
 
 const fetchData = (): void => {
-  const url: string = window.location.href;
-  const match: any = url.match('[=]');
 
-
-  if (match == null) {
     let numeroCartas = json_obj.cards.length
     for (let i = 0; i < numeroCartas; i++) {
       getClient(i)
     }
-  } else {
-    const client = parseInt(url.slice(match.index + 1, url.length));
-    getClient(client)
-  }
+  
+
+  
 }
 
-const getClient = (id: number) => {
-  const transformedClient = {
-    id: id,
-    name: json_obj.cards[id].name,
-    desc: json_obj.cards[id].desc
-  }
+const getClient = (id_num: number) => {
+  const current_url: string = window.location.href;
+  const match: any = current_url.match('[=]');
 
-  ShowCLient(transformedClient)
+  
+  const transformedClient = {
+    id : json_obj.cards[id_num].id,
+    name: json_obj.cards[id_num].name,
+    desc: json_obj.cards[id_num].desc
+  }
+  clients.push(transformedClient)
+  
+
+  
+  if(match == null){
+    ShowCLient(transformedClient)
+  }else{ 
+    const id =  json_obj.cards[id_num].id;
+    const client = current_url.slice(match.index + 1, current_url.length)
+    if(id == client){
+      const transformedClient = {
+        id : json_obj.cards[id_num].id,
+        name: json_obj.cards[id_num].name,
+        desc: json_obj.cards[id_num].desc
+      }
+      ShowCLient(transformedClient)
+    }
+    
+    
+
+  }
+  
+
+    
+
+  
 }
 
 const ShowCLient = (client: ICliente): void => {
@@ -57,15 +80,22 @@ const ShowCLient = (client: ICliente): void => {
 
 fetchData()
 
-// Show relative url based on card
-var e = document.getElementsByClassName('card');
 
-console.log(e)
+
+
+//Show relative url based on card
+var e = document.getElementsByClassName('card');
 for(let i in e){
   e[i].addEventListener("click", function(){
     //do something here
-    const newUrl: string ="http://127.0.0.1:5500/index.html#?options="+e[i].innerText[0]
-    console.log(newUrl);
+    let sub_id = e[i].innerText
+    var result = sub_id.search(/\n/);
+    const id = sub_id.substring(0,result)
+
+    const newUrl: string ="http://127.0.0.1:5500/index.html#?options="+id;
+    console.log(newUrl)
+    
+  
     //or call a function
 
 });

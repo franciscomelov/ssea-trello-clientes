@@ -54,9 +54,10 @@ var _loop_1 = function (i) {
         var sub_id = e[i].innerText;
         var result = sub_id.search(/\n/);
         var id = sub_id.substring(0, result);
-        var c_url = window.location.href;
         var newUrl = window.location.href + "#?options=" + id;
         console.log(newUrl);
+        navigator.clipboard.writeText(newUrl);
+        alert("Copiado");
         //or call a function
     });
 };

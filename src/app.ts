@@ -94,11 +94,12 @@ for(let i in e){
     var result = sub_id.search(/\n/);
     const id = sub_id.substring(0,result)
     
-    const c_url: string = window.location.href;
-   
-
     const newUrl: string =window.location.href+ "#?options="+ id;
     console.log(newUrl)
+
+
+    navigator.clipboard.writeText(newUrl)
+    alert("Copiado")
     
   
     //or call a function

@@ -27,7 +27,7 @@ main > h1 {
 
 #app {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(auto, auto));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 1.5rem;
     justify-content: center;
     align-items: center;
